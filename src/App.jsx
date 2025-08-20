@@ -1,33 +1,36 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
+import NavBar from "./components/NavBar.jsx";
+import Card from "./components/Card.jsx";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [score, setScore] = useState(0);
+  const [bestScore, setBestScore] = useState(0);
+  const [visitedCardIds, setVisitedCardIds] = useState([]);
+
+  function handleClick(e) {
+    const card = e.target.type === "submit" ? e.target : e.target.parentNode;
+    const wasCardVisited = visitedCardIds.find((id) => id === card.id);
+    if (wasCardVisited) {
+      score > bestScore && setBestScore(score);
+      setScore(0);
+      setVisitedCardIds([]);
+    } else {
+      setScore(score + 1);
+      setVisitedCardIds([...visitedCardIds, card.id]);
+    }
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <NavBar score={score} bestScore={bestScore}></NavBar>
+      <main className="cards-container">
+        <Card id={0} onClick={handleClick}></Card>
+        <Card id={1} onClick={handleClick}></Card>
+        <Card id={2} onClick={handleClick}></Card>
+        <Card id={3} onClick={handleClick}></Card>
+        <Card id={4} onClick={handleClick}></Card>
+      </main>
     </>
   );
 }
