@@ -23,6 +23,10 @@ function App() {
       "Aizen, Sousuke",
       "Zaraki, Kenpachi",
       "Urahara, Kisuke",
+      "Inoue, Orihime",
+      "Madarame, Ikkaku",
+      "Cifer, Ulquiorra",
+      "Jaegerjaquez, Grimmjow",
     ];
 
     if (!ignore) {
@@ -70,13 +74,29 @@ function App() {
       setVisitedCardIds([...visitedCardIds, card.id]);
     }
   }
+  const gridPositions = [
+    "first",
+    "second",
+    "third",
+    "fourth",
+    "fifth",
+    "sixth",
+    "seventh",
+    "eigth",
+    "nineth",
+    "tenth",
+  ];
   return (
     <>
       <NavBar score={score} bestScore={bestScore}></NavBar>
       <main className="cards-container">
         {characters.map((character) => {
+          const randomPosition = Math.floor(
+            Math.random() * gridPositions.length,
+          );
           return (
             <Card
+              className={gridPositions.splice(randomPosition, 1)}
               id={character.id}
               imgUrl={character.imgUrls.webp}
               onClick={handleClick}
