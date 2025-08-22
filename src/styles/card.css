@@ -1,10 +1,74 @@
+.cards-container {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(100px, 300px));
+  grid-template-rows: repeat(auto-fit, 200px);
+  grid-template-areas:
+    "first second third fourth fifth"
+    "sixth seventh eigth nineth tenth";
+  gap: 1rem;
+  width: 100%;
+  place-self: center;
+}
+@media screen and (max-width: 900px) {
+  .cards-container {
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fit, 200px);
+    grid-template-areas:
+      "first second third fourth"
+      "fifth sixth seventh eigth"
+      ". nineth tenth  .";
+  }
+}
+@media screen and (max-width: 700px) {
+  .cards-container {
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    grid-template-rows: repeat(auto-fit, 200px);
+    grid-template-areas:
+      "first second"
+      "third fourth"
+      "fifth sixth"
+      "seventh eigth"
+      "nineth tenth";
+  }
+}
 .card {
-  width: 200px;
-  height: 100px;
+  width: auto;
+  height: 200px;
   background-color: pink;
-  outline: 1px solid black;
 }
 
 .card img {
-  width: 50px;
+  width: 90%;
+  height: 90%;
+}
+
+.first {
+  grid-area: first;
+}
+.second {
+  grid-area: second;
+}
+.third {
+  grid-area: third;
+}
+.fourth {
+  grid-area: fourth;
+}
+.fifth {
+  grid-area: fifth;
+}
+.sixth {
+  grid-area: sixth;
+}
+.seventh {
+  grid-area: seventh;
+}
+.eigth {
+  grid-area: eigth;
+}
+.nineth {
+  grid-area: nineth;
+}
+.tenth {
+  grid-area: tenth;
 }
