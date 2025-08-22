@@ -1,10 +1,9 @@
 export default function ScoreBoard({ score, bestScore }) {
+  const bestScoreClassNames = bestScore >= score ? "green" : "red";
   return (
-    <div>
-      <p>best</p>
-      <p>{bestScore}</p>
-      <p>score</p>
-      <p>{score}</p>
+    <div className="score-board">
+      <p className={bestScoreClassNames}>best: {bestScore} </p>
+      <p>score: {score}</p>
     </div>
   );
 }

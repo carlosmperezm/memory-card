@@ -1,3 +1,4 @@
+import "../styles/navbar.css";
 import ScoreBoard from "./ScoreBoard.jsx";
 
 export default function NavBar(props) {
