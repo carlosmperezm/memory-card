@@ -34,12 +34,16 @@
 .card {
   width: auto;
   height: 200px;
-  background-color: pink;
+  background-color: #3330;
+}
+.card:hover {
+  transform: scale(1.1);
+  transition: 300ms ease-in-out transform;
 }
 
 .card img {
-  width: 90%;
-  height: 90%;
+  width: 100%;
+  height: 100%;
 }
 
 .first {
